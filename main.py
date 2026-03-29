@@ -330,8 +330,8 @@ class AchievementSystem:
         w, h = 340, 64
         x = SCREEN_WIDTH - w - 16
         y = 90
-        arcade.draw_rect_filled(x + w // 2, y + h // 2, w, h, (20, 20, 40, int(alpha * 0.9)))
-        arcade.draw_rect_outline(x + w // 2, y + h // 2, w, h, (255, 200, 0, alpha), 2)
+        arcade.draw_rectangle_filled(x + w // 2, y + h // 2, w, h, (20, 20, 40, int(alpha * 0.9)))
+        arcade.draw_rectangle_outline(x + w // 2, y + h // 2, w, h, (255, 200, 0, alpha), 2)
         arcade.draw_text("🏆 Achievement Unlocked!", x + 10, y + 40,
                          (255, 200, 0, alpha), 13, bold=True)
         arcade.draw_text(f"{meta['name']} — {meta['desc']}", x + 10, y + 14,
@@ -412,7 +412,7 @@ class ScreenFlash:
 
     def draw(self):
         if self.alpha > 0:
-            arcade.draw_rect_filled(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2,
+            arcade.draw_rectangle_filled(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2,
                                     SCREEN_WIDTH, SCREEN_HEIGHT,
                                     (*self.color, self.alpha))
 
@@ -954,13 +954,13 @@ class Enemy(arcade.Sprite):
         bar_w, bar_h = 34, 4
         bx = self.center_x - bar_w / 2
         by = self.center_y + 24
-        arcade.draw_rect_filled(bx + bar_w / 2, by + bar_h / 2, bar_w, bar_h, (60, 0, 0, 200))
+        arcade.draw_rectangle_filled(bx + bar_w / 2, by + bar_h / 2, bar_w, bar_h, (60, 0, 0, 200))
         if self.health > 0:
             hp_w = bar_w * (self.health / self.max_health)
-            arcade.draw_rect_filled(bx + hp_w / 2, by + bar_h / 2, hp_w, bar_h, (0, 210, 60, 220))
+            arcade.draw_rectangle_filled(bx + hp_w / 2, by + bar_h / 2, hp_w, bar_h, (0, 210, 60, 220))
         if self.max_enemy_shield > 0:
             sh_w = bar_w * max(0, self.enemy_shield / self.max_enemy_shield)
-            arcade.draw_rect_filled(bx + sh_w / 2, by + bar_h / 2 + bar_h + 2,
+            arcade.draw_rectangle_filled(bx + sh_w / 2, by + bar_h / 2 + bar_h + 2,
                                     sh_w, bar_h, (60, 200, 80, 200))
 
     def draw_sniper_telegraph(self, player: Player):
@@ -1785,14 +1785,14 @@ class GameView(arcade.View):
 
         # ── player ──
         self.handle_player_movement()
-        self.player.on_update(delta_time)
+        self.player.update(delta_time)
         self.fire_weapon()
 
         # ── sprites ──
         for sl in (self.bullet_sprites, self.enemy_bullet_sprites,
                    self.boss_bullet_sprites, self.particle_sprites,
                    self.powerup_sprites, self.asteroid_sprites):
-            sl.on_update(delta_time)
+            sl.update(delta_time)
 
         # ── visual effects ──
         for t in self.dash_trails[:]:
@@ -2074,7 +2074,7 @@ class GameView(arcade.View):
 
     def on_draw(self):
         # Background
-        arcade.draw_rect_filled(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2,
+        arcade.draw_rectangle_filled(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2,
                                 SCREEN_WIDTH, SCREEN_HEIGHT, (4, 4, 18, 255))
         self.star_field.draw()
 
@@ -2125,7 +2125,7 @@ class GameView(arcade.View):
 
         # Boss warning flash
         if self.boss_warning_timer > 0 and self.boss_warning_timer % 10 < 5:
-            arcade.draw_rect_filled(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2,
+            arcade.draw_rectangle_filled(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2,
                                     SCREEN_WIDTH, SCREEN_HEIGHT, (120, 0, 0, 40))
 
         # Floating texts
@@ -2141,12 +2141,12 @@ class GameView(arcade.View):
 
     # ── HUD ────────────────────────────────────────
     def _draw_bar(self, x, y, val, max_val, w, h, col, label):
-        arcade.draw_rect_filled(x + w / 2, y + h / 2, w, h, (35, 35, 50, 210))
+        arcade.draw_rectangle_filled(x + w / 2, y + h / 2, w, h, (35, 35, 50, 210))
         ratio = max(0.0, val / max_val) if max_val > 0 else 0.0
         if ratio > 0:
-            arcade.draw_rect_filled(x + (w * ratio) / 2, y + h / 2,
+            arcade.draw_rectangle_filled(x + (w * ratio) / 2, y + h / 2,
                                     w * ratio, h, col)
-        arcade.draw_rect_outline(x + w / 2, y + h / 2, w, h, (100, 100, 120, 160), 1)
+        arcade.draw_rectangle_outline(x + w / 2, y + h / 2, w, h, (100, 100, 120, 160), 1)
         arcade.draw_text(f"{label}: {int(val)}/{int(max_val)}",
                          x, y - 3, (190, 190, 200, 210), 11)
 
@@ -2223,11 +2223,11 @@ class GameView(arcade.View):
             by2 = SCREEN_HEIGHT - 46
             ratio = max(0.0, self.boss.health / self.boss.max_health)
             col2 = (255, 150, 0, 220) if self.boss.rage_mode else (255, 50, 50, 220)
-            arcade.draw_rect_filled(bx2 + bw2 / 2, by2 + bh2 / 2, bw2, bh2, (40, 0, 0, 210))
+            arcade.draw_rectangle_filled(bx2 + bw2 / 2, by2 + bh2 / 2, bw2, bh2, (40, 0, 0, 210))
             if ratio > 0:
-                arcade.draw_rect_filled(bx2 + (bw2 * ratio) / 2, by2 + bh2 / 2,
+                arcade.draw_rectangle_filled(bx2 + (bw2 * ratio) / 2, by2 + bh2 / 2,
                                         bw2 * ratio, bh2, col2)
-            arcade.draw_rect_outline(bx2 + bw2 / 2, by2 + bh2 / 2, bw2, bh2,
+            arcade.draw_rectangle_outline(bx2 + bw2 / 2, by2 + bh2 / 2, bw2, bh2,
                                      arcade.color.WHITE, 1)
             ph_lbl = f"BOSS  Phase {self.boss.phase}"
             if self.boss.rage_mode:
@@ -2265,8 +2265,8 @@ class GameView(arcade.View):
     def _draw_minimap(self):
         mx, my = SCREEN_WIDTH - MINIMAP_WIDTH - 10, 10
         cw, ch = MINIMAP_WIDTH, MINIMAP_HEIGHT
-        arcade.draw_rect_filled(mx + cw / 2, my + ch / 2, cw, ch, (8, 8, 26, 210))
-        arcade.draw_rect_outline(mx + cw / 2, my + ch / 2, cw, ch, (60, 60, 90, 200), 1)
+        arcade.draw_rectangle_filled(mx + cw / 2, my + ch / 2, cw, ch, (8, 8, 26, 210))
+        arcade.draw_rectangle_outline(mx + cw / 2, my + ch / 2, cw, ch, (60, 60, 90, 200), 1)
         sx, sy = cw / SCREEN_WIDTH, ch / SCREEN_HEIGHT
         arcade.draw_circle_filled(mx + self.player.center_x * sx,
                                   my + self.player.center_y * sy, 4, (0, 220, 255, 255))
@@ -2288,7 +2288,7 @@ class GameView(arcade.View):
 
     def _draw_state_overlay(self):
         if self.state == GameState.PAUSED:
-            arcade.draw_rect_filled(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2,
+            arcade.draw_rectangle_filled(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2,
                                     SCREEN_WIDTH, SCREEN_HEIGHT, (0, 0, 0, 165))
             arcade.draw_text("PAUSED", SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2 + 90,
                              arcade.color.YELLOW, 52, anchor_x="center", bold=True)
@@ -2324,7 +2324,7 @@ class GameView(arcade.View):
             self._draw_game_over()
 
     def _draw_upgrade_screen(self):
-        arcade.draw_rect_filled(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2,
+        arcade.draw_rectangle_filled(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2,
                                 SCREEN_WIDTH, SCREEN_HEIGHT, (0, 0, 0, 190))
         arcade.draw_text("CHOOSE AN UPGRADE", SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2 + 200,
                          (255, 220, 0, 255), 36, anchor_x="center", bold=True)
@@ -2339,8 +2339,8 @@ class GameView(arcade.View):
             selected = (i == self.upgrade_cursor)
             bg = (30, 60, 80, 230) if selected else (20, 20, 40, 200)
             border = (0, 220, 255, 255) if selected else (60, 60, 100, 200)
-            arcade.draw_rect_filled(cx, cy, card_w, card_h, bg)
-            arcade.draw_rect_outline(cx, cy, card_w, card_h, border, 2 if selected else 1)
+            arcade.draw_rectangle_filled(cx, cy, card_w, card_h, bg)
+            arcade.draw_rectangle_outline(cx, cy, card_w, card_h, border, 2 if selected else 1)
             arcade.draw_text(upg.label, cx, cy + 22,
                              (255, 230, 80, 255) if selected else (200, 200, 200, 255),
                              16, anchor_x="center", bold=selected)
@@ -2348,7 +2348,7 @@ class GameView(arcade.View):
                              (160, 200, 200, 220), 12, anchor_x="center")
 
     def _draw_game_over(self):
-        arcade.draw_rect_filled(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2,
+        arcade.draw_rectangle_filled(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2,
                                 SCREEN_WIDTH, SCREEN_HEIGHT, (0, 0, 0, 215))
         arcade.draw_text("GAME OVER", SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2 + 180,
                          arcade.color.RED, 62, anchor_x="center", bold=True)
@@ -2469,10 +2469,10 @@ class MenuView(arcade.View):
                          random.uniform(0, SCREEN_WIDTH),
                          random.uniform(0, SCREEN_HEIGHT // 3))
             self._particle_list.append(p)
-        self._particle_list.on_update(delta_time)
+        self._particle_list.update(delta_time)
 
     def on_draw(self):
-        arcade.draw_rect_filled(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2,
+        arcade.draw_rectangle_filled(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2,
                                 SCREEN_WIDTH, SCREEN_HEIGHT, (4, 4, 18, 255))
         self.star_field.draw()
         self._particle_list.draw()
