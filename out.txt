@@ -1,0 +1,10 @@
+642: (0.49,  "Compiling A* pathfinding grids..."),
+1200: GRID_SIZE         = 40
+1276: (x + GRID_SIZE, y), (x - GRID_SIZE, y),
+1277: (x, y + GRID_SIZE), (x, y - GRID_SIZE),
+1278: (x + GRID_SIZE, y + GRID_SIZE), (x - GRID_SIZE, y - GRID_SIZE),
+1279: (x + GRID_SIZE, y - GRID_SIZE), (x - GRID_SIZE, y + GRID_SIZE),
+1920: sx = int(self.center_x // GRID_SIZE) * GRID_SIZE
+1921: sy = int(self.center_y // GRID_SIZE) * GRID_SIZE
+1922: ex = int(player.center_x // GRID_SIZE) * GRID_SIZE
+1923: ey = int(player.center_y // GRID_SIZE) * GRID_SIZE

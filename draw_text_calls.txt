@@ -1,0 +1,235 @@
+arcade.draw_text("PRODUCTION", text_x, text_y - 2,
+                             (20, 30, 45, text_a)
+--------
+arcade.draw_text("PRODUCTION", text_x, text_y,
+                             (C_STEEL[0], C_STEEL[1], C_STEEL[2], text_a)
+--------
+arcade.draw_text("PRODUCTION", text_x, text_y + 2,
+                             (C_SILVER[0], C_SILVER[1], C_SILVER[2], text_a)
+--------
+arcade.draw_text("PRODUCTION", text_x, text_y + 2,
+                             (C_WHITE[0], C_WHITE[1], C_WHITE[2], int(text_a*0.6)
+--------
+arcade.draw_text(
+                "PRESENTS",
+                SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2 - 100,
+                (C_CHROME[0], C_CHROME[1], C_CHROME[2], tag_a)
+--------
+arcade.draw_text(
+                "ASTROVANGUARD",
+                SCREEN_WIDTH // 2 + shimmer_x, ty + 24,
+                (C_CHROME[0], C_CHROME[1], C_CHROME[2], title_a)
+--------
+arcade.draw_text(
+                "ASTROVANGUARD",
+                SCREEN_WIDTH // 2 + shimmer_x + 2, ty + 22,
+                (C_GOLD_DARK[0], C_GOLD_DARK[1], C_GOLD_DARK[2], int(title_a * 0.35)
+--------
+arcade.draw_text(
+                "AI  TACTICAL  SPACE  SIEGE  —  ENHANCED  EDITION  v5.0",
+                SCREEN_WIDTH // 2, ty - 28,
+                (C_GOLD[0], C_GOLD[1], C_GOLD[2], title_a)
+--------
+arcade.draw_text("A", 170, 528,
+                         (C_GOLD[0], C_GOLD[1], C_GOLD[2], ia)
+--------
+arcade.draw_text("V² PRODUCTIONS", 170, 488,
+                         (C_SILVER[0], C_SILVER[1], C_SILVER[2], ia)
+--------
+arcade.draw_text("PRESENTS", 170, 465,
+                         (C_STEEL[0], C_STEEL[1], C_STEEL[2], ia)
+--------
+arcade.draw_text(label, 960, sy,
+                             (C_GOLD[0], C_GOLD[1], C_GOLD[2], ia)
+--------
+arcade.draw_text(val, 1215, sy,
+                             (C_CHROME[0], C_CHROME[1], C_CHROME[2], ia)
+--------
+arcade.draw_text(
+            status,
+            SCREEN_WIDTH // 2, bar_y_center + 28,
+            (C_CYAN[0], C_CYAN[1], C_CYAN[2], blink_a)
+--------
+arcade.draw_text(
+            f"{pct}%",
+            SCREEN_WIDTH // 2 + 400, bar_y_center - 2,
+            (C_GOLD_LIGHT[0], C_GOLD_LIGHT[1], C_GOLD_LIGHT[2], ia)
+--------
+arcade.draw_text(
+            self.TIPS[self._tip_idx],
+            SCREEN_WIDTH // 2, bar_y_center + 70,
+            (C_STEEL[0], C_STEEL[1], C_STEEL[2], max(0, tip_a)
+--------
+arcade.draw_text(
+            "© 2025  V² PRODUCTIONS  ·  ALL RIGHTS RESERVED  ·  "
+            "ASTROVANGUARD v5.0",
+            SCREEN_WIDTH // 2, 18,
+            (C_STEEL[0], C_STEEL[1], C_STEEL[2], int(ia * 0.7)
+--------
+arcade.draw_text(
+                "PRESS  ENTER  TO  LAUNCH",
+                SCREEN_WIDTH // 2, bar_y_center - 20,
+                (C_GOLD_LIGHT[0], C_GOLD_LIGHT[1], C_GOLD_LIGHT[2], pulse)
+--------
+arcade.draw_text("🏆 Achievement Unlocked!", x + 10, y + 40,
+                         (255, 200, 0, alpha)
+--------
+arcade.draw_text(f"{meta['name']} — {meta['desc']}", x + 10, y + 14,
+                         (220, 220, 220, alpha)
+--------
+arcade.draw_text(self.text, self.x, self.y, tuple(self.color)
+--------
+arcade.draw_text(f"{label}: {int(val)
+--------
+arcade.draw_text(f"Score: {self.score:,}", pad, hud_y,
+                         arcade.color.WHITE, 16, bold=True)
+--------
+arcade.draw_text(f"Wave: {self.wave_manager.current_wave}", pad, hud_y - 26,
+                         arcade.color.YELLOW, 13)
+--------
+arcade.draw_text(f"Kills: {self.total_kills}", pad, hud_y - 48,
+                         arcade.color.LIGHT_GRAY, 12)
+--------
+arcade.draw_text(f"Combo: x{self.combo}", pad, hud_y - 70,
+                         combo_col, 13, bold=(self.combo >= 10)
+--------
+arcade.draw_text(f"⚡ {nm}", pad, hud_y - 92, (*col, 220)
+--------
+arcade.draw_text("Lives:", pad, hud_y - 198, arcade.color.WHITE, 12)
+--------
+arcade.draw_text(f"Weapon: {self.player.current_weapon.value.upper()
+--------
+arcade.draw_text("SHIFT: Dash" + ("  ✔" if dash_ready else "")
+--------
+arcade.draw_text("E: Shield" + ("  ON" if self.player.shield_active else "")
+--------
+arcade.draw_text("Active:", pad, py, arcade.color.LIGHT_YELLOW, 11)
+--------
+arcade.draw_text(f"  {pt.value} ({secs}s)
+--------
+arcade.draw_text(ph_lbl, SCREEN_WIDTH // 2, by2 + bh2 + 8,
+                             arcade.color.RED, 13, anchor_x="center", bold=True)
+--------
+arcade.draw_text(f"{int(self.boss.health)
+--------
+arcade.draw_text(f"Enemies: {en}", SCREEN_WIDTH - 164, SCREEN_HEIGHT - 30,
+                             (255, 100, 100, 255)
+--------
+arcade.draw_text(f"FPS: {fps:.0f}", SCREEN_WIDTH - 90, 10,
+                             (140, 140, 140, 200)
+--------
+arcade.draw_text(self.announcement_text,
+                             SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2 + 130,
+                             (255, 255, 100, alpha)
+--------
+arcade.draw_text("MAP", mx + 4, my + ch - 14, (100, 100, 150, 200)
+--------
+arcade.draw_text(f"E:{len(self.enemy_sprites)
+--------
+arcade.draw_text("📷 CAMERA", px + 4, py + ph - 14,
+                         (0, 220, 255, 220)
+--------
+arcade.draw_text(gesture, px + pw - 8, py + 4,
+                         g_col, 11, anchor_x="right", bold=True)
+--------
+arcade.draw_text(mode_text, SCREEN_WIDTH // 2, 12,
+                         mode_color, 12, anchor_x="center", bold=True)
+--------
+arcade.draw_text(f"Gesture: {label}", SCREEN_WIDTH // 2, 32,
+                             col, 14, anchor_x="center", bold=True)
+--------
+arcade.draw_text(rot_text, SCREEN_WIDTH // 2, 52,
+                                 rot_col, 11, anchor_x="center", bold=True)
+--------
+arcade.draw_text("PAUSED", SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2 + 90,
+                             arcade.color.YELLOW, 52, anchor_x="center", bold=True)
+--------
+arcade.draw_text("SPACE — Resume    R — Restart    Q — Menu",
+                             SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2 + 20,
+                             arcade.color.WHITE, 18, anchor_x="center")
+--------
+arcade.draw_text(f"Difficulty: {self.settings.difficulty.value.upper()
+--------
+arcade.draw_text(f"Max Combo: x{self.max_combo}  |  "
+                             f"Score: {self.score:,}  |  Kills: {self.total_kills}",
+                             SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2 - 56,
+                             arcade.color.LIGHT_YELLOW, 14, anchor_x="center")
+--------
+arcade.draw_text(f"A key — Aim Assist: {'ON' if self.player.aim_assist else 'OFF'}",
+                             SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2 - 90,
+                             aim_col, 13, anchor_x="center")
+--------
+arcade.draw_text(f"Achievements: {len(self.achievements.unlocked)
+--------
+arcade.draw_text(f"Respawning in {secs}...",
+                             SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2,
+                             (255, 200, 0, 220)
+--------
+arcade.draw_text("CHOOSE AN UPGRADE", SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2 + 200,
+                         (255, 220, 0, 255)
+--------
+arcade.draw_text("↑↓ / W S to navigate   ENTER to confirm",
+                         SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2 + 155,
+                         (180, 180, 180, 200)
+--------
+arcade.draw_text(upg.label, cx, cy + 22,
+                             (255, 230, 80, 255)
+--------
+arcade.draw_text(upg.description, cx, cy - 8,
+                             (160, 200, 200, 220)
+--------
+arcade.draw_text("GAME OVER", SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2 + 180,
+                         arcade.color.RED, 62, anchor_x="center", bold=True)
+--------
+arcade.draw_text(f"Score: {self.score:,}",
+                         SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2 + 112,
+                         arcade.color.WHITE, 28, anchor_x="center")
+--------
+arcade.draw_text(
+            f"Wave: {self.wave_manager.current_wave}  |  "
+            f"Kills: {self.total_kills}  |  Max Combo: x{self.max_combo}",
+            SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2 + 72,
+            arcade.color.LIGHT_GRAY, 16, anchor_x="center")
+--------
+arcade.draw_text("Achievements: " + "  ·  ".join(ach_names[:6])
+--------
+arcade.draw_text("— TOP SCORES —", SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2 + 8,
+                         arcade.color.GOLD, 18, anchor_x="center", bold=True)
+--------
+arcade.draw_text(
+                f"{medals[i]}  {entry['score']:>9,}  Wave {entry['wave']:>2}  "
+                f"[{entry['difficulty']}]  {entry['date']}",
+                SCREEN_WIDTH // 2, row_y, arcade.color.LIGHT_YELLOW, 14, anchor_x="center")
+--------
+arcade.draw_text("R — Restart    Q — Menu",
+                         SCREEN_WIDTH // 2, 50, arcade.color.WHITE, 16, anchor_x="center")
+--------
+arcade.draw_text("ASTRO", SCREEN_WIDTH // 2, SCREEN_HEIGHT - 110,
+                         col, 88, anchor_x="center", bold=True)
+--------
+arcade.draw_text("VANGUARD", SCREEN_WIDTH // 2, SCREEN_HEIGHT - 196,
+                         (255, 255, 255, 220)
+--------
+arcade.draw_text("AI Tactical Space Siege  v5.0",
+                         SCREEN_WIDTH // 2, SCREEN_HEIGHT - 240,
+                         (120, 160, 200, 200)
+--------
+arcade.draw_text("ENTER — Start Game", SCREEN_WIDTH // 2, cy,
+                         arcade.color.YELLOW, 22, anchor_x="center", bold=True)
+--------
+arcade.draw_text("D — Cycle Difficulty", SCREEN_WIDTH // 2, cy - 44,
+                         arcade.color.WHITE, 16, anchor_x="center")
+--------
+arcade.draw_text("Q — Quit", SCREEN_WIDTH // 2, cy - 80,
+                         arcade.color.WHITE, 16, anchor_x="center")
+--------
+arcade.draw_text(f"Difficulty: {self.settings.difficulty.value.upper()
+--------
+arcade.draw_text("Controls:", lx, ly, (140, 170, 220, 220)
+--------
+arcade.draw_text(c, lx, ly - 22 - i * 20, (110, 140, 170, 200)
+--------
+arcade.draw_text(f"Best: {self.settings.high_score:,}",
+                             SCREEN_WIDTH // 2, 50,
+                             arcade.color.GOLD, 20, anchor_x="center", bold=True)
+--------

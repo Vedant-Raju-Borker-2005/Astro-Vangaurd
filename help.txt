@@ -1,0 +1,22 @@
+Help on function draw_texture_rect in module arcade.draw.rect:
+
+draw_texture_rect(texture: arcade.texture.texture.Texture, rect: arcade.types.rect.Rect, *, color: arcade.types.color.Color = Color(r=255, g=255, b=255, a=255), angle=0.0, blend=True, alpha=255, pixelated=False, atlas: arcade.texture_atlas.base.TextureAtlasBase | None = None) -> None
+    Draw a texture on a rectangle.
+    
+    Args:
+        texture:
+            The texture to draw.
+        rect:
+            Rectangle to draw the texture on.
+        color:
+             Color multiplier for the texture. Defaults to white.
+        angle:
+            Rotation of the texture in degrees. Defaults to zero.
+        blend:
+            If True, enable alpha blending. Defaults to True.
+        alpha:
+            Transparency of image. 0 is fully transparent, 255 (default) is fully opaque.
+        atlas:
+            The texture atlas the texture resides in.
+            if not supplied the default texture atlas is used
+

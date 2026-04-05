@@ -1,0 +1,57 @@
+Line 41: pyglet.options['audio'] = ('openal', 'directsound', 'silent')
+Line 1215: SOUND_PATH  = os.path.join(ASSETS_PATH, "sounds")
+Line 2316: self.wave_timer          = 0
+Line 2317: self.wave_active         = False
+Line 2318: self.wave_delay          = 160
+Line 2321: self.wave_cleared        = False
+Line 2344: self.wave_active      = True
+Line 2345: self.wave_timer       = 0
+Line 2347: self.wave_cleared     = False
+Line 2362: self.wave_cleared = False
+Line 2363: if not self.wave_active:
+Line 2364: self.wave_timer += 1
+Line 2365: if self.wave_timer >= self.wave_delay:
+Line 2369: self.wave_active  = False
+Line 2370: self.wave_timer   = 0
+Line 2371: self.wave_cleared = True
+Line 2422: self.sounds   = self._load_sounds()
+Line 2427: self._bg_music = arcade.Sound(os.path.join(BASE_DIR, "bg_music.mp3"))
+Line 2431: print(f"⚠ Could not load bg_music.mp3: {e}")
+Line 2451: self.wave_manager = WaveManager(settings.difficulty)
+Line 2510: self.wave_damage_taken = 0
+Line 2511: self.wave_sniper_kills = 0
+Line 2518: self.wave_manager.start_wave()
+Line 2521: # ── sounds ──────────────────────────────────────
+Line 2522: def _load_sounds(self) -> Dict:
+Line 2523: sounds = {}
+Line 2524: for name, fname in [('shoot','shoot.wav'), ('hit','hit.wav'),
+Line 2525: ('boss','boss.wav'), ('powerup','powerup.wav'),
+Line 2526: ('explode','explode.wav')]:
+Line 2528: sounds[name] = arcade.load_sound(os.path.join(SOUND_PATH, fname))
+Line 2531: return sounds
+Line 2535: if name in self.sounds:
+Line 2536: arcade.play_sound(self.sounds[name], volume=self.settings.sfx_volume)
+Line 2629: self.wave_sniper_kills += 1
+Line 2630: if self.wave_sniper_kills >= 3:
+Line 2988: asteroid_interval = max(180, 420 - self.wave_manager.current_wave * 20)
+Line 2995: should_spawn = self.wave_manager.update(living)
+Line 2998: pos = self.wave_manager.pop_spawn_position()
+Line 2999: et  = (self.wave_manager._formation_type
+Line 3000: if self.wave_manager._formation_type and pos
+Line 3001: else self.wave_manager.get_enemy_type())
+Line 3008: if (self.wave_manager.is_boss_wave() and
+Line 3017: if self.wave_manager.wave_cleared:
+Line 3019: bonus = int(50 * self.wave_manager.current_wave * mult)
+Line 3021: cleared_wave = self.wave_manager.current_wave - 1
+Line 3030: if self.wave_damage_taken == 0:
+Line 3034: self.wave_damage_taken   = 0
+Line 3035: self.wave_sniper_kills   = 0
+Line 3107: self.wave_damage_taken += dealt
+Line 3118: self.wave_damage_taken += dealt
+Line 3232: self.settings.record_score(self.score, self.wave_manager.current_wave)
+Line 3323: arcade.draw_text(f"Wave: {self.wave_manager.current_wave}", pad, hud_y - 26,
+Line 3332: if self.wave_manager.modifier != WaveModifier.NONE:
+Line 3339: nm, col = mod_names.get(self.wave_manager.modifier, ("", (200, 200, 200)))
+Line 3626: f"Wave: {self.wave_manager.current_wave}  |  "
+Line 3772: self._bg_music = arcade.Sound(os.path.join(BASE_DIR, "bg_music.mp3"))
+Line 3776: print(f"⚠ Could not load bg_music.mp3: {e}")

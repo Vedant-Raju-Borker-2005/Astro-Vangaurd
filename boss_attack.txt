@@ -1,0 +1,71 @@
+Line 2034: 
+Line 2035:     def select_attack(self, player: Player) -> str:
+Line 2036:         dist   = math.hypot(self.center_x - player.center_x, self.center_y - player.center_y)
+Line 2037:         hp_pct = self.health / self.max_health
+Line 2038:         if hp_pct < 0.33:
+Line 2039:             self.phase = 3; self.rage_mode = True
+Line 2040:             attacks = ["BLAST", "LASER", "BEAM", "BLAST"]
+Line 2041:         elif hp_pct < 0.66:
+Line 2042:             self.phase = 2
+Line 2043:             attacks = ["LASER", "DASH", "BEAM", "SUMMON"] if dist > 200 else ["BLAST", "DASH"]
+Line 2044:         else:
+Line 2045:             self.phase = 1
+Line 2046:             attacks = ["LASER", "DASH"] if dist > 300 else ["BLAST"]
+Line 2047:         return random.choice(attacks)
+Line 2048: 
+Line 2049:     def decide_action(self, player: Player) -> str:
+Line 2050:         dist  = math.hypot(self.center_x - player.center_x, self.center_y - player.center_y)
+Line 2051:         score = minimax(1, True, dist, -math.inf, math.inf)
+Line 2052:         return "ATTACK" if score > -200 else "MOVE"
+Line 2053: 
+Line 2054:     def update_boss(self, player: Player,
+Line 2055:                     boss_bullets: arcade.SpriteList,
+Line 2056:                     enemy_sprites: arcade.SpriteList,
+Line 2057:                     difficulty: Difficulty):
+Line 2058:         self.move_timer = max(0, self.move_timer - 1)
+Line 2059:         if self.summon_cd > 0:
+Line 2060:             self.summon_cd -= 1
+Line 2061: 
+Line 2062:         # Glide to target
+Line 2063:         if self.move_timer == 0:
+Line 2064:             self._pick_target()
+Line 2065:         dx = self.move_target_x - self.center_x
+Line 2066:         dy = self.move_target_y - self.center_y
+Line 2067:         dist = math.hypot(dx, dy)
+Line 2068:         if dist > 2:
+Line 2069:             spd = BOSS_SPEED * (1.5 if self.rage_mode else 1.0)
+Line 2070:             self.center_x += (dx / dist) * spd
+Line 2071:             self.center_y += (dy / dist) * spd
+Line 2072: 
+Line 2073:         self.center_x = max(80, min(SCREEN_WIDTH - 80, self.center_x))
+Line 2074:         self.center_y = max(80, min(SCREEN_HEIGHT - 80, self.center_y))
+Line 2075: 
+Line 2076:         angle = math.atan2(player.center_y - self.center_y,
+Line 2077:                            player.center_x - self.center_x)
+Line 2078:         self.angle = math.degrees(angle) - 90
+Line 2079: 
+Line 2080:         # BEAM charge/fire sequence
+Line 2081:         if self.beam_charging:
+Line 2082:             self.beam_charge_timer -= 1
+Line 2083:             if self.beam_charge_timer <= 0:
+Line 2084:                 self.beam_charging = False
+Line 2085:                 self.beam_fire_timer = 20
+Line 2086:                 # Fire wide spread
+Line 2087:                 spread_n = 7 if self.rage_mode else 4
+Line 2088:                 for i in range(spread_n):
+Line 2089:                     sp = (i / (spread_n - 1) - 0.5) * 0.6
+Line 2090:                     b = Bullet(self.center_x, self.center_y,
+Line 2091:                                self.beam_angle + sp, 10,
+Line 2092:                                is_player=False, damage=14,
+Line 2093:                                color=(255, 120, 0, 255),
+Line 2094:                                texture_path="boss_weapon_2.png" if self.rage_mode else "boss_weapon_1.png")
+Line 2095:                     boss_bullets.append(b)
+Line 2096:             return  # don't normal-attack while charging
+Line 2097: 
+Line 2098:         if self.beam_fire_timer > 0:
+Line 2099:             self.beam_fire_timer -= 1
+Line 2100:             return
+Line 2101: 
+Line 2102:         if self.attack_cooldown > 0:
+Line 2103:             self.attack_cooldown -= 1
+Line 2104:             return

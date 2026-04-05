@@ -1,0 +1,87 @@
+329: arcade.draw_rectangle_outline(x, y, w, h, brd_col, 1)
+340: arcade.draw_polygon_outline(pts, (C_GOLD[0], C_GOLD[1], C_GOLD[2], alpha), 2)
+347: arcade.draw_line(x - w/2, y + h/2, x - w/2 + size, y + h/2, col, lw)
+348: arcade.draw_line(x - w/2, y + h/2, x - w/2, y + h/2 - size, col, lw)
+350: arcade.draw_line(x + w/2, y + h/2, x + w/2 - size, y + h/2, col, lw)
+351: arcade.draw_line(x + w/2, y + h/2, x + w/2, y + h/2 - size, col, lw)
+353: arcade.draw_line(x - w/2, y - h/2, x - w/2 + size, y - h/2, col, lw)
+354: arcade.draw_line(x - w/2, y - h/2, x - w/2, y - h/2 + size, col, lw)
+356: arcade.draw_line(x + w/2, y - h/2, x + w/2 - size, y - h/2, col, lw)
+357: arcade.draw_line(x + w/2, y - h/2, x + w/2, y - h/2 + size, col, lw)
+384: arcade.draw_rectangle_outline(self.cx, self.cy, self.w, self.h, (40, 50, 80, 200), 1)
+428: arcade.draw_polygon_outline(ship_pts, (0, 210, 255, 255), 1)
+435: # Outline on fill
+436: arcade.draw_rectangle_outline(self.cx, self.cy, self.w, self.h,
+444: self.scale = 1.0
+451: self.scale = 0.92 + 0.08 * math.sin(t * 2.0)
+456: def _ship_points(self, cx, cy, angle_deg, scale=1.0):
+458: s = 36 * scale
+474: pts = self._ship_points(self.cx, self.cy, a, self.scale)
+478: pts = self._ship_points(self.cx, self.cy, self.angle, self.scale)
+480: arcade.draw_polygon_outline(pts, (0, 200, 255, 220), 2)
+483: glow_r = 52 * self.scale
+485: arcade.draw_circle_outline(self.cx, self.cy, glow_r,
+487: arcade.draw_circle_outline(self.cx, self.cy, glow_r + 10,
+492: ex = self.cx + math.cos(rad) * 36 * self.scale
+493: ey = self.cy + math.sin(rad) * 36 * self.scale
+591: arcade.draw_polygon_outline(pts_left, (C_CYAN[0], C_CYAN[1], C_CYAN[2], int(alpha*0.8)), 3)
+592: arcade.draw_polygon_outline(pts_right, (C_CYAN[0], C_CYAN[1], C_CYAN[2], int(alpha*0.8)), 3)
+642: (0.49,  "Compiling A* pathfinding grids..."),
+649: (1.00,  "SYSTEMS ONLINE — LAUNCHING"),
+687: # Decorative scan lines
+773: # Scan line
+799: # ── Scan line (subtle CRT effect) ──────────────
+800: arcade.draw_line(0, self._scan_y, SCREEN_WIDTH, self._scan_y,
+802: arcade.draw_line(0, self._scan_y + 2, SCREEN_WIDTH, self._scan_y + 2,
+837: # Tagline below logo
+884: # Gold separator lines
+887: arcade.draw_line(lx1, ty - 8, lx2, ty - 8,
+910: arcade.draw_line(110, 482, 230, 482,
+940: arcade.draw_line(960, sy - 4, 1215, sy - 4,
+957: blink_a = int(ia * (0.5 + 0.5 * math.sin(self.t * 8))) if "ONLINE" in status else ia
+990: arcade.draw_line(80, 155, SCREEN_WIDTH - 80, 155,
+1091: DENSE_PACK = "dense_pack"
+1200: GRID_SIZE         = 40
+1276: (x + GRID_SIZE, y), (x - GRID_SIZE, y),
+1277: (x, y + GRID_SIZE), (x, y - GRID_SIZE),
+1278: (x + GRID_SIZE, y + GRID_SIZE), (x - GRID_SIZE, y - GRID_SIZE),
+1279: (x + GRID_SIZE, y - GRID_SIZE), (x - GRID_SIZE, y + GRID_SIZE),
+1346: arcade.draw_rectangle_outline(x + w // 2, y + h // 2, w, h, (255, 200, 0, alpha), 2)
+1406: arcade.draw_circle_outline(self.x, self.y, self.radius,
+1457: self.scale = random.uniform(0.08, 0.28) if not spark else random.uniform(0.05, 0.15)
+1601: super().__init__(os.path.join(IMG_PATH, "player.png"), scale=0.15)
+1767: super().__init__(os.path.join(IMG_PATH, "bullet.png"), scale=0.01)
+1807: super().__init__(os.path.join(IMG_PATH, "enemy.png"), scale=0.025)
+1904: # Draw telegraph line handled in draw
+1920: sx = int(self.center_x // GRID_SIZE) * GRID_SIZE
+1921: sy = int(self.center_y // GRID_SIZE) * GRID_SIZE
+1922: ex = int(player.center_x // GRID_SIZE) * GRID_SIZE
+1923: ey = int(player.center_y // GRID_SIZE) * GRID_SIZE
+1981: """Draw aim line for sniper charge-up."""
+1994: arcade.draw_line(self.center_x, self.center_y, end_x, end_y,
+2003: super().__init__(os.path.join(IMG_PATH, "boss.png"), scale=0.55)
+2158: arcade.draw_line(self.center_x, self.center_y, end_x, end_y,
+2161: arcade.draw_circle_outline(self.center_x, self.center_y,
+2329: WaveModifier.SHIELDED_WAVE, WaveModifier.DENSE_PACK,
+2766: # ── Linear movement (based on ship's current facing direction) ──
+3274: arcade.draw_circle_outline(self.player.center_x, self.player.center_y,
+3300: arcade.draw_rectangle_outline(x + w / 2, y + h / 2, w, h, (100, 100, 120, 160), 1)
+3325: WaveModifier.DENSE_PACK:   ("DENSE PACK",   (255, 120, 0)),
+3346: arcade.draw_circle_outline(pad + 58 + i * 22, hud_y - 191, 7, (60, 60, 80, 160), 1)
+3381: arcade.draw_rectangle_outline(bx2 + bw2 / 2, by2 + bh2 / 2, bw2, bh2,
+3422: arcade.draw_rectangle_outline(mx + cw / 2, my + ch / 2, cw, ch, (60, 60, 90, 200), 1)
+3474: arcade.draw_rectangle_outline(px + pw / 2, py + ph / 2, pw, ph,
+3508: # In gesture mode, show current gesture label prominently
+3598: arcade.draw_rectangle_outline(cx, cy, card_w, card_h, border, 2 if selected else 1)
+3782: arcade.draw_line(SCREEN_WIDTH // 2 - 280, SCREEN_HEIGHT - 262,
+3910: line_alpha = max(0, int(255 * (1.0 - ease_slide)**2))
+3911: arcade.draw_line(*ptl_shifted[0], *ptl_shifted[2], (100, 255, 255, line_alpha), 5)
+3912: arcade.draw_line(*pbr_shifted[0], *pbr_shifted[2], (100, 255, 255, line_alpha), 5)
+3919: scale = 45
+3921: (scale*1.8, 0),
+3922: (-scale*1.0, scale*0.5),
+3923: (-scale*0.4, 0),
+3924: (-scale*1.0, -scale*0.5)
+3936: t1x, t1y = ship_x + (-scale*0.8)*math.cos(rad), ship_y + (-scale*0.8)*math.sin(rad)
+3937: t2x, t2y = ship_x + (-scale*2.5)*math.cos(rad), ship_y + (-scale*2.5)*math.sin(rad)
+3939: arcade.draw_line(t1x, t1y, t2x, t2y, (0, 220, 255, 200), max(1, 10))

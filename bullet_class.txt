@@ -1,0 +1,35 @@
+Line 1761: class Bullet(arcade.Sprite):
+Line 1762:     def __init__(self, x, y, angle, speed, is_player=True,
+Line 1763:                  penetrating=False, damage=20.0, color=None,
+Line 1764:                  texture_path="bullet.png", custom_scale=None):
+Line 1765:         if color is None:
+Line 1766:             color = (255, 240, 0, 255) if is_player else (255, 60, 60, 255)
+Line 1767:         # Determine scale based on texture defaults or user provided
+Line 1768:         if custom_scale is not None:
+Line 1769:             scale = custom_scale
+Line 1770:         else:
+Line 1771:             scale = 0.01 if texture_path == "bullet.png" else 0.05
+Line 1772:         super().__init__(os.path.join(IMG_PATH, texture_path), scale=scale)
+Line 1773:         self.color = color
+Line 1774:         self.center_x, self.center_y = x, y
+Line 1775:         self.vx = math.cos(angle) * speed
+Line 1776:         self.vy = math.sin(angle) * speed
+Line 1777:         self.is_player = is_player
+Line 1778:         self.penetrating = penetrating
+Line 1779:         self.damage = damage
+Line 1780:         self.lifetime = 480
+Line 1781: 
+Line 1782:     def on_update(self, delta_time=1 / 60):
+Line 1783:         self.center_x += self.vx
+Line 1784:         self.center_y += self.vy
+Line 1785:         self.lifetime -= 1
+Line 1786:         # Kill bullets that leave the battlefield
+Line 1787:         if (self.center_x < -80 or self.center_x > SCREEN_WIDTH + 80 or
+Line 1788:                 self.center_y < -80 or self.center_y > SCREEN_HEIGHT + 80 or
+Line 1789:                 self.lifetime <= 0):
+Line 1790:             self.kill()
+Line 1791: 
+Line 1792: # ═══════════════════════════════════════════════════
+Line 1793: # ENEMY
+Line 1794: # ═══════════════════════════════════════════════════
+Line 1795: 

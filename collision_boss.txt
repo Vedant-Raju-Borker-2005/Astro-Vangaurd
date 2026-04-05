@@ -1,0 +1,100 @@
+Line 3081: 
+Line 3082:         # Player bullets → boss
+Line 3083:         if self.boss:
+Line 3084:             for bullet in list(self.bullet_sprites):
+Line 3085:                 if bullet.alive and arcade.check_for_collision(bullet, self.boss):
+Line 3086:                     self.boss.take_damage(bullet.damage)
+Line 3087:                     bullet.kill()
+Line 3088:                     self._play('hit')
+Line 3089:                     self.camera.shake(3, 3)
+Line 3090:                     self.add_float(f"-{int(bullet.damage)}",
+Line 3091:                                    self.boss.center_x,
+Line 3092:                                    self.boss.center_y + 35,
+Line 3093:                                    color=(255, 100, 100, 255))
+Line 3094:                     if self.boss.health <= 0:
+Line 3095:                         self._kill_boss()
+Line 3096:                         break
+Line 3097: 
+Line 3098:         # Enemy bullets → player
+Line 3099:         dmg_setting = DIFFICULTY_SETTINGS[self.settings.difficulty].enemy_bullet_damage
+Line 3100:         for bullet in list(self.enemy_bullet_sprites):
+Line 3101:             if bullet.alive and arcade.check_for_collision(bullet, self.player):
+Line 3102:                 dealt = self.player.take_damage(dmg_setting)
+Line 3103:                 if dealt > 0:
+Line 3104:                     bullet.kill()
+Line 3105:                     self.camera.shake(4, 4)
+Line 3106:                     self.screen_flash.trigger((200, 0, 0), 60)
+Line 3107:                     self.wave_damage_taken += dealt
+Line 3108:                     self.achievements.shield_absorbed += (dealt - max(0, dmg_setting - dealt))
+Line 3109: 
+Line 3110:         # Boss bullets → player
+Line 3111:         for bullet in list(self.boss_bullet_sprites):
+Line 3112:             if bullet.alive and arcade.check_for_collision(bullet, self.player):
+Line 3113:                 dealt = self.player.take_damage(bullet.damage)
+Line 3114:                 if dealt > 0:
+Line 3115:                     bullet.kill()
+Line 3116:                     self.camera.shake(7, 7)
+Line 3117:                     self.screen_flash.trigger((200, 0, 0), 80)
+Line 3118:                     self.wave_damage_taken += dealt
+Line 3119: 
+Line 3120:         # Player vs powerups
+Line 3121:         for pu in list(self.powerup_sprites):
+Line 3122:             if pu.alive and arcade.check_for_collision(self.player, pu):
+Line 3123:                 msg = self.player.apply_power_up(pu)
+Line 3124:                 if pu.power_up_type == PowerUpType.NUKE:
+Line 3125:                     self.nuke_all_enemies()
+Line 3126:                 self._play('powerup')
+Line 3127:                 self.add_float(msg, pu.center_x, pu.center_y + 30,
+Line 3128:                                color=(0, 255, 160, 255), size=16)
+Line 3129:                 pu.kill()
+Line 3130: 
+Line 3131:         # Player vs asteroids
+Line 3132:         for ast in list(self.asteroid_sprites):
+Line 3133:             if not ast.alive:
+Line 3134:                 continue
+Line 3135:             dist = math.hypot(self.player.center_x - ast.center_x,
+Line 3136:                               self.player.center_y - ast.center_y)
+Line 3137:             if dist < ast.radius + 18:
+Line 3138:                 dealt = self.player.take_damage(ast.damage)
+Line 3139:                 if dealt > 0:
+Line 3140:                     self.camera.shake(8, 8)
+Line 3141:                     self.screen_flash.trigger((160, 80, 0), 60)
+Line 3142:                     self.create_explosion(ast.center_x, ast.center_y, 15, (140, 120, 100, 255))
+Line 3143:                     ast.kill()
+Line 3144: 
+Line 3145:         # Enemy (kamikaze) vs player
+Line 3146:         for enemy in list(self.enemy_sprites):
+Line 3147:             if not enemy.alive or enemy.enemy_type != EnemyType.KAMIKAZE:
+Line 3148:                 continue
+Line 3149:             dist = math.hypot(self.player.center_x - enemy.center_x,
+Line 3150:                               self.player.center_y - enemy.center_y)
+Line 3151:             if dist < 30:
+Line 3152:                 dealt = self.player.take_damage(35)
+Line 3153:                 if dealt > 0:
+Line 3154:                     self.create_explosion(enemy.center_x, enemy.center_y, 30, (255, 60, 200, 255))
+Line 3155:                     self.camera.shake(12, 12)
+Line 3156:                     self.screen_flash.trigger((255, 0, 180), 90)
+Line 3157:                 enemy.health = 0
+Line 3158:                 self._kill_enemy(enemy)
+Line 3159: 
+Line 3160:         # Shield absorption tracking
+Line 3161:         if self.player.shield_active:
+Line 3162:             # rough tracking done on damage calls above
+Line 3163:             pass
+Line 3164:         if self.achievements.shield_absorbed >= 500:
+Line 3165:             self.achievements.unlock(AchievementID.IRON_SHIELD)
+Line 3166: 
+Line 3167:         # ── death ──
+Line 3168:         if self.player.health <= 0:
+Line 3169:             self._player_died()
+Line 3170: 
+Line 3171:     # ── boss lifecycle ───────────────────────────────
+Line 3172:     def _spawn_boss(self):
+Line 3173:         self.boss = Boss(self.settings.difficulty)
+Line 3174:         self.boss_sprites.append(self.boss)
+Line 3175:         self.boss_spawned_this_wave = True
+Line 3176:         self._boss_last_phase = 1
+Line 3177:         self._play('boss')
+Line 3178:         self.announce("⚡ BOSS BATTLE! ⚡", 200)
+Line 3179:         self.camera.shake(22, 22)
+Line 3180:         self.screen_flash.trigger((100, 0, 0), 100)

@@ -1,7 +1,40 @@
 {
-  "difficulty": "hard",
+  "difficulty": "easy",
   "music_volume": 0.5,
   "sfx_volume": 0.8,
   "show_fps": false,
-  "high_score": 20
+  "high_score": 12328,
+  "high_score_table": [
+    {
+      "score": 12328,
+      "wave": 15,
+      "difficulty": "easy",
+      "date": "2026-04-04"
+    },
+    {
+      "score": 11180,
+      "wave": 14,
+      "difficulty": "easy",
+      "date": "2026-04-01"
+    },
+    {
+      "score": 8328,
+      "wave": 12,
+      "difficulty": "easy",
+      "date": "2026-04-05"
+    },
+    {
+      "score": 6107,
+      "wave": 8,
+      "difficulty": "hard",
+      "date": "2026-04-04"
+    },
+    {
+      "score": 5190,
+      "wave": 11,
+      "difficulty": "easy",
+      "date": "2026-04-04"
+    }
+  ],
+  "aim_assist": false
 }

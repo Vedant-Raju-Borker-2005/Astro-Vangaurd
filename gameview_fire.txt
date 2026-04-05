@@ -1,0 +1,58 @@
+Line 2841:     def fire_weapon(self):
+Line 2842:         # Determine if we should be firing
+Line 2843:         if self.control_mode == ControlMode.GESTURE:
+Line 2844:             if not self._gesture_fire_active:
+Line 2845:                 return
+Line 2846:         else:
+Line 2847:             if not self.mouse_held:
+Line 2848:                 return
+Line 2849:         effective_fire_rate = max(3, FIRE_RATE - self._fire_rate_bonus)
+Line 2850:         self.fire_timer += 1
+Line 2851:         if self.fire_timer < effective_fire_rate:
+Line 2852:             return
+Line 2853:         if self.player.energy < self.player.energy_cost_fire:
+Line 2854:             return
+Line 2855: 
+Line 2856:         if self.player.aim_assist:
+Line 2857:             self._apply_aim_assist()
+Line 2858: 
+Line 2859:         ar  = math.radians(self.player.angle + 90)
+Line 2860:         off = 48
+Line 2861: 
+Line 2862:         dmg = self.player.get_bullet_damage()
+Line 2863:         spd = self.player.get_bullet_speed()
+Line 2864: 
+Line 2865:         # Asset swapping for player
+Line 2866:         is_boss_fight = self.boss is not None
+Line 2867:         player_tex_path = "player_power_weapon.png" if is_boss_fight else "bullet.png"
+Line 2868: 
+Line 2869:         if self.player.current_weapon == WeaponType.SINGLE:
+Line 2870:             self.bullet_sprites.append(
+Line 2871:                 Bullet(self.player.center_x + math.cos(ar) * off,
+Line 2872:                        self.player.center_y + math.sin(ar) * off,
+Line 2873:                        ar, spd, damage=dmg, texture_path=player_tex_path))
+Line 2874: 
+Line 2875:         elif self.player.current_weapon == WeaponType.SPREAD:
+Line 2876:             n       = self.player.spread_count
+Line 2877:             spread  = 0.22
+Line 2878:             offsets = [(i / (n - 1) - 0.5) * spread * 2 for i in range(n)] if n > 1 else [0]
+Line 2879:             for sp in offsets:
+Line 2880:                 a = ar + sp
+Line 2881:                 self.bullet_sprites.append(
+Line 2882:                     Bullet(self.player.center_x + math.cos(a) * off,
+Line 2883:                            self.player.center_y + math.sin(a) * off,
+Line 2884:                            a, spd, damage=dmg, color=(255, 200, 0, 255), texture_path=player_tex_path))
+Line 2885: 
+Line 2886:         elif self.player.current_weapon == WeaponType.PIERCING:
+Line 2887:             self.bullet_sprites.append(
+Line 2888:                 Bullet(self.player.center_x + math.cos(ar) * off,
+Line 2889:                        self.player.center_y + math.sin(ar) * off,
+Line 2890:                        ar, spd, penetrating=True, damage=dmg,
+Line 2891:                        color=(200, 0, 255, 255), texture_path=player_tex_path))
+Line 2892: 
+Line 2893:         self.player.energy -= self.player.energy_cost_fire
+Line 2894:         self._play('shoot')
+Line 2895:         self.muzzle_timer = MUZZLE_DURATION
+Line 2896:         self.fire_timer   = 0
+Line 2897: 
+Line 2898:     def _apply_gesture_input(self):

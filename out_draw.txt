@@ -1,0 +1,75 @@
+41: pyglet.options['audio'] = ('openal', 'directsound', 'silent')
+77: - finger_angle:  radians (direction from index finger)
+311: """Layered rectangle simulating brushed-metal surface."""
+313: arcade.draw_rectangle_filled(x, y, w, h, (12, 14, 22, min(255, alpha)))
+316: arcade.draw_rectangle_filled(x, y + (h - ht) / 2, w, ht,
+320: arcade.draw_rectangle_filled(x, y, w, hm,
+324: arcade.draw_rectangle_filled(x, y - (h - hs) / 2, w, hs,
+329: arcade.draw_rectangle_outline(x, y, w, h, brd_col, 1)
+347: arcade.draw_line(x - w/2, y + h/2, x - w/2 + size, y + h/2, col, lw)
+348: arcade.draw_line(x - w/2, y + h/2, x - w/2, y + h/2 - size, col, lw)
+350: arcade.draw_line(x + w/2, y + h/2, x + w/2 - size, y + h/2, col, lw)
+351: arcade.draw_line(x + w/2, y + h/2, x + w/2, y + h/2 - size, col, lw)
+353: arcade.draw_line(x - w/2, y - h/2, x - w/2 + size, y - h/2, col, lw)
+354: arcade.draw_line(x - w/2, y - h/2, x - w/2, y - h/2 + size, col, lw)
+356: arcade.draw_line(x + w/2, y - h/2, x + w/2 - size, y - h/2, col, lw)
+357: arcade.draw_line(x + w/2, y - h/2, x + w/2, y - h/2 + size, col, lw)
+383: arcade.draw_rectangle_filled(self.cx, self.cy, self.w, self.h, (8, 10, 20, 230))
+384: arcade.draw_rectangle_outline(self.cx, self.cy, self.w, self.h, (40, 50, 80, 200), 1)
+403: arcade.draw_rectangle_filled(
+412: arcade.draw_rectangle_filled(
+436: arcade.draw_rectangle_outline(self.cx, self.cy, self.w, self.h,
+601: # Blocky 2 constructed from overlapping thick rectangles
+607: arcade.draw_rectangle_filled((lx+rx)/2, y1, rx-lx, L, (C_SILVER[0], C_SILVER[1], C_SILVER[2], alpha))
+609: arcade.draw_rectangle_filled((lx+rx)/2, y2, rx-lx, L, (C_CHROME[0], C_CHROME[1], C_CHROME[2], alpha))
+611: arcade.draw_rectangle_filled((lx+rx)/2, y3, rx-lx, L, (C_SILVER[0], C_SILVER[1], C_SILVER[2], alpha))
+613: arcade.draw_rectangle_filled(rx - L/2, (y1+y2)/2, L, y1-y2 + L, (C_CHROME[0], C_CHROME[1], C_CHROME[2], alpha))
+615: arcade.draw_rectangle_filled(lx + L/2, (y2+y3)/2, L, y2-y3 + L, (C_STEEL[0], C_STEEL[1], C_STEEL[2], alpha))
+792: arcade.draw_rectangle_filled(
+800: arcade.draw_line(0, self._scan_y, SCREEN_WIDTH, self._scan_y,
+802: arcade.draw_line(0, self._scan_y + 2, SCREEN_WIDTH, self._scan_y + 2,
+828: arcade.draw_rectangle_filled(
+887: arcade.draw_line(lx1, ty - 8, lx2, ty - 8,
+910: arcade.draw_line(110, 482, 230, 482,
+940: arcade.draw_line(960, sy - 4, 1215, sy - 4,
+990: arcade.draw_line(80, 155, SCREEN_WIDTH - 80, 155,
+1006: arcade.draw_rectangle_filled(
+1009: arcade.draw_rectangle_filled(
+1012: arcade.draw_rectangle_filled(
+1015: arcade.draw_rectangle_filled(
+1220: # ALPHA-BETA PRUNING AI  (unchanged, correct logic)
+1345: arcade.draw_rectangle_filled(x + w // 2, y + h // 2, w, h, (20, 20, 40, int(alpha * 0.9)))
+1346: arcade.draw_rectangle_outline(x + w // 2, y + h // 2, w, h, (255, 200, 0, alpha), 2)
+1427: arcade.draw_rectangle_filled(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2,
+1971: arcade.draw_rectangle_filled(bx + bar_w / 2, by + bar_h / 2, bar_w, bar_h, (60, 0, 0, 200))
+1974: arcade.draw_rectangle_filled(bx + hp_w / 2, by + bar_h / 2, hp_w, bar_h, (0, 210, 60, 220))
+1977: arcade.draw_rectangle_filled(bx + sh_w / 2, by + bar_h / 2 + bar_h + 2,
+1994: arcade.draw_line(self.center_x, self.center_y, end_x, end_y,
+2158: arcade.draw_line(self.center_x, self.center_y, end_x, end_y,
+2766: # ── Linear movement (based on ship's current facing direction) ──
+2767: # Ship's forward direction: angle + 90 (sprite faces up at angle 0)
+2771: # Thrust forward in facing direction
+2791: # Slight drag while firing (drift in current direction)
+3229: arcade.draw_lrwh_rectangle_textured(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, self.bg_texture)
+3279: arcade.draw_rectangle_filled(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2,
+3295: arcade.draw_rectangle_filled(x + w / 2, y + h / 2, w, h, (35, 35, 50, 210))
+3298: arcade.draw_rectangle_filled(x + (w * ratio) / 2, y + h / 2,
+3300: arcade.draw_rectangle_outline(x + w / 2, y + h / 2, w, h, (100, 100, 120, 160), 1)
+3377: arcade.draw_rectangle_filled(bx2 + bw2 / 2, by2 + bh2 / 2, bw2, bh2, (40, 0, 0, 210))
+3379: arcade.draw_rectangle_filled(bx2 + (bw2 * ratio) / 2, by2 + bh2 / 2,
+3381: arcade.draw_rectangle_outline(bx2 + bw2 / 2, by2 + bh2 / 2, bw2, bh2,
+3421: arcade.draw_rectangle_filled(mx + cw / 2, my + ch / 2, cw, ch, (8, 8, 26, 210))
+3422: arcade.draw_rectangle_outline(mx + cw / 2, my + ch / 2, cw, ch, (60, 60, 90, 200), 1)
+3465: arcade.draw_rectangle_filled(px + pw / 2, py + ph / 2, pw + 4, ph + 4,
+3469: arcade.draw_lrwh_rectangle_textured(
+3474: arcade.draw_rectangle_outline(px + pw / 2, py + ph / 2, pw, ph,
+3546: arcade.draw_rectangle_filled(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2,
+3582: arcade.draw_rectangle_filled(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2,
+3597: arcade.draw_rectangle_filled(cx, cy, card_w, card_h, bg)
+3598: arcade.draw_rectangle_outline(cx, cy, card_w, card_h, border, 2 if selected else 1)
+3606: arcade.draw_rectangle_filled(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2,
+3767: arcade.draw_lrwh_rectangle_textured(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, self.bg_texture)
+3782: arcade.draw_line(SCREEN_WIDTH // 2 - 280, SCREEN_HEIGHT - 262,
+3911: arcade.draw_line(*ptl_shifted[0], *ptl_shifted[2], (100, 255, 255, line_alpha), 5)
+3912: arcade.draw_line(*pbr_shifted[0], *pbr_shifted[2], (100, 255, 255, line_alpha), 5)
+3939: arcade.draw_line(t1x, t1y, t2x, t2y, (0, 220, 255, 200), max(1, 10))

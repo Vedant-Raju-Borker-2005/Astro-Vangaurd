@@ -1,0 +1,179 @@
+Line 86: def __init__(self):
+Line 98: def gesture_state(self) -> str:
+Line 103: def camera_frame_rgb(self) -> Optional[np.ndarray]:
+Line 108: def start(self):
+Line 115: def stop(self):
+Line 126: def is_running(self) -> bool:
+Line 130: def get_camera_texture(self) -> Optional[arcade.Texture]:
+Line 149: def _worker(self):
+Line 238: def _get_finger_states(lm, handedness_label: str):
+Line 258: def __init__(self):
+Line 269: def update(self, t: float):
+Line 278: def draw(self):
+Line 287: def __init__(self):
+Line 300: def draw(self):
+Line 310: def draw_metal_panel(x, y, w, h, alpha=255, accent=False):
+Line 332: def draw_hex_badge(cx, cy, r, col, alpha=255):
+Line 343: def draw_corner_bracket(x, y, w, h, size=18, col=(180, 162, 48, 255)):
+Line 361: def __init__(self, cx, cy, w, h):
+Line 369: def set_target(self, t: float):
+Line 372: def update(self):
+Line 378: def draw(self):
+Line 441: def __init__(self, cx, cy):
+Line 448: def update(self, t: float):
+Line 456: def _ship_points(self, cx, cy, angle_deg, scale=1.0):
+Line 470: def draw(self):
+Line 503: def __init__(self, cx, cy):
+Line 508: def update(self, t: float, reveal: float):
+Line 512: def draw(self):
+Line 663: def __init__(self, settings=None, next_view_fn=None):
+Line 693: def _logo_reveal(self) -> float:
+Line 699: def _title_reveal(self) -> float:
+Line 705: def _hud_reveal(self) -> float:
+Line 710: def _advance_loading(self):
+Line 716: def _current_status(self) -> str:
+Line 724: def on_update(self, delta_time: float):
+Line 788: def on_draw(self):
+Line 821: def _draw_logo_phase(self):
+Line 847: def _draw_game_phase(self):
+Line 1002: def _draw_vignette(self):
+Line 1020: def on_key_press(self, symbol, modifiers):
+Line 1033: def _new_sprite_init(self, *args, **kwargs):
+Line 1039: def _new_sprite_kill(self):
+Line 1223: def minimax(depth: int, is_maximizing: bool, distance: float,
+Line 1255: def __lt__(self, other: 'Node') -> bool:
+Line 1258: def astar(start: Tuple[int, int], end: Tuple[int, int],
+Line 1312: def __init__(self):
+Line 1320: def unlock(self, aid: AchievementID):
+Line 1325: def check(self, aid: AchievementID, condition: bool):
+Line 1329: def update(self):
+Line 1336: def draw(self):
+Line 1357: def __init__(self, text: str, x: float, y: float,
+Line 1368: def update(self):
+Line 1376: def draw(self):
+Line 1387: def __init__(self, x: float, y: float,
+Line 1396: def update(self):
+Line 1404: def draw(self):
+Line 1411: def __init__(self):
+Line 1416: def trigger(self, color=(255, 0, 0), strength=80):
+Line 1421: def update(self):
+Line 1425: def draw(self):
+Line 1433: def __init__(self, x: float, y: float):
+Line 1438: def update(self):
+Line 1443: def draw(self):
+Line 1452: def __init__(self, texture: arcade.Texture, x: float, y: float,
+Line 1468: def on_update(self, delta_time: float = 1 / 60):
+Line 1482: def __init__(self):
+Line 1487: def _generate(self):
+Line 1497: def scroll(self, sf=0.3, sn=0.75):
+Line 1501: def draw(self):
+Line 1512: def __init__(self):
+Line 1527: def on_update(self, delta_time=1 / 60):
+Line 1550: def __init__(self, x: float, y: float, power_up_type: PowerUpType):
+Line 1558: def on_update(self, delta_time=1 / 60):
+Line 1600: def __init__(self):
+Line 1639: def on_update(self, delta_time=1 / 60):
+Line 1681: def dash(self) -> bool:
+Line 1690: def toggle_shield(self) -> bool:
+Line 1701: def apply_power_up(self, power_up: 'PowerUp') -> str:
+Line 1723: def take_damage(self, damage: float) -> float:
+Line 1740: def get_effective_speed(self) -> float:
+Line 1746: def get_weapon_tier(self) -> int:
+Line 1749: def get_bullet_damage(self) -> float:
+Line 1753: def get_bullet_speed(self) -> float:
+Line 1762: def __init__(self, x, y, angle, speed, is_player=True,
+Line 1782: def on_update(self, delta_time=1 / 60):
+Line 1806: def __init__(self, difficulty: Difficulty,
+Line 1844: def take_damage(self, damage: float, knockback_angle: float = 0.0) -> float:
+Line 1860: def update_enemy(self, player: Player, speed: float,
+Line 1972: def draw_health_bar(self):
+Line 1985: def draw_sniper_telegraph(self, player: Player):
+Line 2007: def __init__(self, difficulty: Difficulty):
+Line 2030: def _pick_target(self):
+Line 2035: def select_attack(self, player: Player) -> str:
+Line 2049: def decide_action(self, player: Player) -> str:
+Line 2054: def update_boss(self, player: Player,
+Line 2154: def take_damage(self, damage: float):
+Line 2157: def draw_beam_charge(self):
+Line 2180: def v_wing(count: int) -> List[Tuple[float, float]]:
+Line 2190: def column(count: int) -> List[Tuple[float, float]]:
+Line 2195: def pincer(count: int) -> List[Tuple[float, float]]:
+Line 2202: def diamond(count: int) -> List[Tuple[float, float]]:
+Line 2211: def get_formation(cls, name: str, count: int) -> List[Tuple[float, float]]:
+Line 2224: def __init__(self):
+Line 2229: def shake(self, amount=10.0, duration=10):
+Line 2233: def update(self):
+Line 2245: def get_offset(self) -> Tuple[float, float]:
+Line 2262: def save(self, filename="settings.json"):
+Line 2279: def load(cls, filename="settings.json") -> 'GameSettings':
+Line 2295: def record_score(self, score: int, wave: int):
+Line 2311: def __init__(self, difficulty: Difficulty):
+Line 2328: def get_wave_size(self) -> int:
+Line 2331: def _pick_modifier(self) -> WaveModifier:
+Line 2340: def start_wave(self):
+Line 2360: def update(self, living_enemies: int) -> bool:
+Line 2383: def pop_spawn_position(self) -> Optional[Tuple[float, float]]:
+Line 2389: def is_boss_wave(self) -> bool:
+Line 2392: def get_enemy_type(self) -> EnemyType:
+Line 2417: def __init__(self, settings: GameSettings):
+Line 2522: def _load_sounds(self) -> Dict:
+Line 2533: def _play(self, name: str):
+Line 2541: def announce(self, text: str, duration: int = 150):
+Line 2545: def add_float(self, text, x, y, color=(255, 255, 100, 255), size=14):
+Line 2548: def create_explosion(self, x, y, count=25, color=(255, 165, 0, 255)):
+Line 2554: def create_sparks(self, x, y, count=8, color=(255, 240, 120, 255)):
+Line 2560: def upg_max_hp(self):
+Line 2564: def upg_max_shield(self):
+Line 2568: def upg_max_energy(self):
+Line 2571: def upg_fire_rate(self):
+Line 2574: def upg_dash_speed(self):
+Line 2577: def upg_shield_regen(self):
+Line 2580: def upg_weapon_tier(self):
+Line 2588: def upg_energy_regen(self):
+Line 2591: def upg_combo_window(self):
+Line 2594: def upg_extra_life(self):
+Line 2597: def upg_dash_cd(self):
+Line 2600: def upg_spread_count(self):
+Line 2603: def _open_upgrade_screen(self):
+Line 2610: def _apply_upgrade(self, idx: int):
+Line 2620: def _kill_enemy(self, enemy: Enemy):
+Line 2644: def _increment_combo(self):
+Line 2655: def spawn_powerup(self, x, y, enemy_type: EnemyType):
+Line 2683: def nuke_all_enemies(self):
+Line 2694: def handle_player_movement(self):
+Line 2700: def _handle_keyboard_movement(self):
+Line 2746: def _handle_gesture_movement(self):
+Line 2823: def _apply_aim_assist(self):
+Line 2841: def fire_weapon(self):
+Line 2898: def _apply_gesture_input(self):
+Line 2907: def on_update(self, delta_time: float):
+Line 3172: def _spawn_boss(self):
+Line 3182: def _kill_boss(self):
+Line 3206: def _player_died(self):
+Line 3217: def _do_respawn(self):
+Line 3230: def _game_over(self):
+Line 3239: def on_draw(self):
+Line 3306: def _draw_bar(self, x, y, val, max_val, w, h, col, label):
+Line 3316: def _draw_hud(self):
+Line 3430: def _draw_minimap(self):
+Line 3454: def _draw_camera_preview(self):
+Line 3507: def _draw_gesture_hud(self):
+Line 3556: def _draw_state_overlay(self):
+Line 3593: def _draw_upgrade_screen(self):
+Line 3617: def _draw_game_over(self):
+Line 3653: def on_mouse_motion(self, x, y, dx, dy):
+Line 3659: def on_mouse_press(self, x, y, button, modifiers):
+Line 3665: def on_mouse_release(self, x, y, button, modifiers):
+Line 3670: def on_key_press(self, symbol: int, modifiers: int):
+Line 3731: def _stop_music(self):
+Line 3739: def on_key_release(self, symbol: int, modifiers: int):
+Line 3747: def __init__(self, settings: GameSettings):
+Line 3779: def on_update(self, delta_time: float):
+Line 3791: def on_draw(self):
+Line 3851: def on_key_press(self, symbol: int, modifiers: int):
+Line 3862: def _stop_music(self):
+Line 3876: def __init__(self, from_view, to_view, duration=2.5):
+Line 3883: def on_update(self, delta_time):
+Line 3893: def on_draw(self):
+Line 3967: def main():
+Line 3975: def on_loading_complete():

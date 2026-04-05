@@ -1,0 +1,6 @@
+Line 2470:         self.boss_bullet_sprites  = arcade.SpriteList()
+Line 3005:                    self.boss_bullet_sprites, self.particle_sprites,
+Line 3098:             self.boss.update_boss(self.player, self.boss_bullet_sprites,
+Line 3171:         for bullet in list(self.boss_bullet_sprites):
+Line 3297:         for sl in (self.enemy_bullet_sprites, self.boss_bullet_sprites):
+Line 3333:         self.boss_bullet_sprites.draw()
