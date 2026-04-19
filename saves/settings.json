@@ -2,7 +2,7 @@
   "difficulty": "easy",
   "music_volume": 0.5,
   "sfx_volume": 0.8,
-  "show_fps": false,
+  "show_fps": true,
   "high_score": 12328,
   "high_score_table": [
     {
@@ -24,15 +24,15 @@
       "date": "2026-04-05"
     },
     {
+      "score": 7985,
+      "wave": 12,
+      "difficulty": "easy",
+      "date": "2026-04-15"
+    },
+    {
       "score": 6107,
       "wave": 8,
       "difficulty": "hard",
-      "date": "2026-04-04"
-    },
-    {
-      "score": 5190,
-      "wave": 11,
-      "difficulty": "easy",
       "date": "2026-04-04"
     }
   ],

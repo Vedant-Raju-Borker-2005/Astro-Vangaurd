@@ -283,7 +283,7 @@ class ShipSilhouette:
 
         # Glow ring
         glow_r = 52 * self.scale
-        pulse_a = int(30 + 40 * math.sin(self._pulse_t * 3))
+        pulse_a = max(0, min(255, int(30 + 40 * math.sin(self._pulse_t * 3))))
         arcade.draw_circle_outline(self.cx, self.cy, glow_r,
                                    (0, 180, 255, pulse_a), 8)
         arcade.draw_circle_outline(self.cx, self.cy, glow_r + 10,
