@@ -68,5 +68,4 @@ Test your skills and try to unlock all achievements:
 
 ## 📜 Credits
 
-Developed by Vedant Raju Borkar.
-Built using the Python [Arcade](https://api.arcade.academy/en/latest/) library.
+Developed by Vedant Raju Borker.
